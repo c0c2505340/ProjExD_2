@@ -20,20 +20,22 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def gameover(screen:pg.Surface) -> None:
     # screen=pg.Surface((WIDTH,HEIGHT))
-    brack=pg.Surface((5000,5000))
-    pg.draw.rect(brack,(0,0,0),pg.Rect(5000,5000,WIDTH,HEIGHT))
+    brack=pg.Surface((WIDTH,HEIGHT))
+    pg.draw.rect(brack,(0,0,0),pg.Rect(0,0,WIDTH,HEIGHT))
     brack.set_alpha(200)
 
-    kk_img=pg.image.load("fig/2.ping")
+    kk_img=pg.image.load("fig/2.png")
     kk_rct=kk_img.get_rect()
+    brack.blit(kk_img,kk_rct)
+    
 
     font=pg.font.Font(None, 80)
     txt=font.render("gameover",True,(255,255,255))
     text_rct=txt.get_rect()
     brack.blit(txt,text_rct)
+    
 
-    screen.blit(brack,(300,300))
-
+    screen.blit(brack,(0,0))
     pg.display.update()
     time.sleep(5)
 
