@@ -19,8 +19,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def gameover(screen:pg.Surface) -> None:
     # screen=pg.Surface((WIDTH,HEIGHT))
-    yoko2=1100
-    tate2=600
+  
     brack=pg.Surface((WIDTH,HEIGHT))
     pg.draw.rect(brack,(0,0,0),pg.Rect(0,0,WIDTH,HEIGHT))
     brack.set_alpha(200)
@@ -36,7 +35,7 @@ def gameover(screen:pg.Surface) -> None:
 
     font=pg.font.Font(None, 80)
     txt=font.render("gameover",True,(255,255,255))
-    text_rct=txt.get_rect(center=(yoko2//2,tate2//2))
+    text_rct=txt.get_rect(center=(WIDTH//2,HEIGHT//2))
     brack.blit(txt,text_rct)
     
 
