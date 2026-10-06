@@ -2,6 +2,7 @@ import os
 import random
 import sys
 import pygame as pg
+import time
 
 
 WIDTH, HEIGHT = 1100, 650
@@ -11,7 +12,27 @@ DELTA={
     pg.K_LEFT:(-5,0),
     pg.K_RIGHT:(5,0),
 }
+# kk_dict={
+
+# }
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+
+def gameover(screen:pg.Surface) -> None:
+    # screen=pg.Surface((WIDTH,HEIGHT))
+    brack=pg.Surface((WIDTH,HEIGHT))
+    pg.draw.rect(brack,(0,0,0),pg.Rect(0,0,WIDTH,HEIGHT))
+    brack.set_alpha(200)
+
+    font=pg.font.Font(None, 80)
+    txt=font.render("gameover",True,(255,255,255))
+    text_rct=txt.get_rect()
+    brack.blit(txt,text_rct)
+
+    screen.blit(brack,(0,0))
+
+    pg.display.update()
+    time.sleep(5)
 
 
 def check_bound(rect:pg.Rect) -> tuple[bool,bool]:
@@ -42,6 +63,8 @@ def main():
     bb_rct.center=random.randint(1,WIDTH),random.randint(0,HEIGHT)
     bb_img.set_colorkey((0, 0, 0))
     vx, vy = +5, +5  # 練習2：爆弾の初期速度
+
+
     clock = pg.time.Clock()
     tmr = 0
     while True:
@@ -51,7 +74,7 @@ def main():
         screen.blit(bg_img, [0, 0]) 
 
         if kk_rct.colliderect(bb_rct): #kkとbbのRectが重なっていたらtrue
-            print("game over")
+            gameover(screen)
             return
 
         key_lst = pg.key.get_pressed()
