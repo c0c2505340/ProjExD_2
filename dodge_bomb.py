@@ -4,7 +4,6 @@ import sys
 import pygame as pg
 import time
 
-
 WIDTH, HEIGHT = 1100, 650
 DELTA={
     pg.K_UP:(0,-5),
@@ -20,18 +19,24 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def gameover(screen:pg.Surface) -> None:
     # screen=pg.Surface((WIDTH,HEIGHT))
+    yoko2=1100
+    tate2=600
     brack=pg.Surface((WIDTH,HEIGHT))
     pg.draw.rect(brack,(0,0,0),pg.Rect(0,0,WIDTH,HEIGHT))
     brack.set_alpha(200)
 
     kk_img=pg.image.load("fig/2.png")
-    kk_rct=kk_img.get_rect()
+    kk_rct=kk_img.get_rect(center=(350,300))
     brack.blit(kk_img,kk_rct)
-    
+
+    kk_img2=pg.image.load("fig/0.png")
+    kk_rct2=kk_img2.get_rect(center=(750,300))
+    brack.blit(kk_img2,kk_rct2)
+
 
     font=pg.font.Font(None, 80)
     txt=font.render("gameover",True,(255,255,255))
-    text_rct=txt.get_rect()
+    text_rct=txt.get_rect(center=(yoko2//2,tate2//2))
     brack.blit(txt,text_rct)
     
 
