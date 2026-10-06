@@ -24,11 +24,11 @@ def gameover(screen:pg.Surface) -> None:
     pg.draw.rect(brack,(0,0,0),pg.Rect(0,0,WIDTH,HEIGHT))
     brack.set_alpha(200)
 
-    kk_img=pg.image.load("fig/2.png")
+    kk_img=pg.image.load("fig/8.png")
     kk_rct=kk_img.get_rect(center=(350,300))
     brack.blit(kk_img,kk_rct)
 
-    kk_img2=pg.image.load("fig/0.png")
+    kk_img2=pg.image.load("fig/8.png")
     kk_rct2=kk_img2.get_rect(center=(750,300))
     brack.blit(kk_img2,kk_rct2)
 
